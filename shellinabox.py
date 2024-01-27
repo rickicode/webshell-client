@@ -36,7 +36,7 @@ def monitor_daemon(inactivity_interval, identity_file):
 	
 	if identity_file != "":
 		time.sleep(1)
-		# os.unlink(identity_file)
+		os.unlink(identity_file)
 
 	try:
 		while True:
