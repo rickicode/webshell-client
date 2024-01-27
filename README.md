@@ -19,7 +19,7 @@ The code doesn't support DNS names for servers because It involves ambiguity in 
 The most basic usage involves to run docker container and specify allowed networks in CIDR format (use comma to separate them). By default gray networks are specified - 10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,fc00::/7)
 
 ```bash
-docker run -d --privileged --security-opt seccomp=unconfined --name webshell -p 8018:80 -e ALLOWED_NETWORKS=0.0.0.0/0 webshell
+docker run -d --privileged --security-opt seccomp=unconfined --name webshell -p 8018:80 -e ALLOWED_NETWORKS=0.0.0.0/0 ghcr.io/rickicode/webshell-ssh
 ```
 
 Navigate to http://hostname.com:8018/ to specify server ip, port and login interactively or 
@@ -37,9 +37,6 @@ to use URL-based and default values
 3. **DEFAULT_IP** - default ip to use (if not specified, both ipv4 and ipv6 are ok)
 4. **ALLOWED_NETWORKS** - comma-separated list of CIDRs (10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,fc00::/7, both ipv4 and ipv6 are ok)
 5. **INACTIVITY_INTERVAL** - amount of seconds of noIO between remote server and browser after which the monitor script must terminate the connection (default 60)
-6. **VAULT_ENABLED** - specifies either HashiCorp Vault enabled or not
-7. **VAULT_VALUE** - specifies value field name for secret key where to get private ssh key
-8. **VAULT_URL** - specifies where Vault is deployed (e.g. http(s)://somewhere.com:8200/v1).
 
 ## HashiCorp's Vault integration notes
 
