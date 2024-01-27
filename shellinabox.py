@@ -117,19 +117,19 @@ if __name__ == "__main__":
 
 	identity_file = ""
 	if length > 3:
-		pubkey = base64.b64decode(peer_parts[3]).decode('utf-8')
-		if "RSA" in pubkey:
-				pubkey_path = os.path.join("/tmp", "privkey")
-				if os.path.exists(pubkey_path):
-					os.unlink(pubkey_path)
-				# Write the pubkey content to the file
-				with open(pubkey_path, "w") as f:
-					f.write(pubkey)
+		privkey = base64.b64decode(peer_parts[3]).decode('utf-8')
+		if "RSA" in privkey:
+				privkey_path = os.path.join("/tmp", "privkey")
+				if os.path.exists(privkey_path):
+					os.unlink(privkey_path)
+				# Write the privkey content to the file
+				with open(privkey_path, "w") as f:
+					f.write(privkey)
 				# Set permissions to 600 for security
-				os.chmod(pubkey_path, 0o600)
-				identity_file = pubkey_path
+				os.chmod(privkey_path, 0o600)
+				identity_file = privkey_path
 				print("Using public key authentication...")
-				# print(f"Public key is saved to {pubkey_path}")
+				# print(f"Public key is saved to {privkey_path}")
 
 	allowed_networks = list(map(lambda x: ipaddress.ip_network(x.strip()), allowed_networks.split(",")))
 	ipInNetworks = False
