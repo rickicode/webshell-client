@@ -120,7 +120,8 @@ if __name__ == "__main__":
 		pubkey = base64.b64decode(peer_parts[3]).decode('utf-8')
 		if "RSA" in pubkey:
 				pubkey_path = os.path.join("/tmp", "privkey")
-				os.unlink(pubkey_path)
+				if os.path.exists(pubkey_path):
+					os.unlink(pubkey_path)
 				# Write the pubkey content to the file
 				with open(pubkey_path, "w") as f:
 					f.write(pubkey)
