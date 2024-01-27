@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo "#!/bin/bash" > /opt/shellinabox.run
+echo "export SSH_PORT=$SSH_PORT" >> /opt/shellinabox.run
+echo "export USERNAME=$USERNAME" >> /opt/shellinabox.run
+echo "export DEFAULT_IP=$DEFAULT_IP" >> /opt/shellinabox.run
+echo "export ALLOWED_NETWORKS=$ALLOWED_NETWORKS" >> /opt/shellinabox.run
+echo "export INACTIVITY_INTERVAL=$INACTIVITY_INTERVAL" >> /opt/shellinabox.run
+echo "export TERM=xterm" >> /opt/shellinabox.run
+echo "exec /opt/shellinabox.py \$1" >> /opt/shellinabox.run
+
+chmod 755 /opt/shellinabox.run
+cat /opt/shellinabox.run
+
+echo 0 > /proc/sys/kernel/yama/ptrace_scope
+
+/usr/bin/shellinaboxd -q -p 80 -u webshell -g webshell --disable-ssl --no-beep --service '/:webshell:webshell:HOME:/opt/shellinabox.run ${url}' --user-css 'White On Black:-/etc/shellinabox/options-enabled/00_White On Black.css,Black on White:+/etc/shellinabox/options-enabled/00+Black on White.css;Color Terminal:+/etc/shellinabox/options-enabled/01+Color Terminal.css,Monochrome:-/etc/shellinabox/options-enabled/01_Monochrome.css'
