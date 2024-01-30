@@ -11,7 +11,7 @@ It is distributed in the form of Docker container which includes Shellinabox and
 # Usage
 
 ```bash
-docker run -d --privileged --security-opt seccomp=unconfined --restart unless-stopped --name webshell -p 8018:8018 rickicode/webshell-ssh:latest
+docker run -d --privileged --security-opt seccomp=unconfined --restart unless-stopped --name webshell-ssh -p 8018:8018 rickicode/webshell-ssh:latest
 ```
 
 Navigate to http://hostname.com:8018/ to specify server ip, port and login interactively or 
