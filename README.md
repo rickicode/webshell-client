@@ -37,6 +37,6 @@ If you want to use a private key, you need to encode it in base64 and pass it as
 
 ## Author
 
-rickicode @ [NETQ.ME](https://netq.me/)
+rickicode - [NETQ.ME](https://netq.me/)
 
 Forked from [Webshell](https://github.com/bwsw/webshell)
