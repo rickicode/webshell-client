@@ -6,6 +6,10 @@ on:
     tags:
       - v*
   pull_request:
+  # This creates an environment variable called `IMAGE_NAME ` with the value `ghtoken_product_demo`.
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: webshell-ssh
 #
 jobs:
   # This pushes the image to GitHub Packages.
@@ -38,7 +42,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: rickicode/webshell-ssh:latest
+          tags: rickicode/$IMAGE_NAME:latest
           platforms: linux/amd64,linux/arm64/v8
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
@@ -49,6 +53,5 @@ jobs:
         run: |
           IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
           echo IMAGE_ID=$IMAGE_ID
-          echo VERSION=$VERSION
           docker tag rickicode/webshell-ssh:latest $IMAGE_ID:latest
-          docker push $IMAGE_ID:$VERSION
+          docker push $IMAGE_ID:latest
