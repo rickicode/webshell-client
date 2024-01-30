@@ -12,7 +12,10 @@ echo "exec /opt/shellinabox.py \$1" >> /opt/shellinabox.run
 chmod 755 /opt/shellinabox.run
 # cat /opt/shellinabox.run > /opt/shellinabox.run.bak
 
+echo "Free VPN Account only on NETQ.ME"
+
 echo "Running WebShell SSH..."
+
 
 echo 0 > /proc/sys/kernel/yama/ptrace_scope > /dev/null 2>&1
 
