@@ -51,6 +51,5 @@ jobs:
         #
       - name: Push image to ghcr.io
         run: |
-          IMAGE_ID=ghcr.io/rickicode/webshell-ssh
-          docker tag rickicode/webshell-ssh:latest $IMAGE_ID:latest
+          docker tag rickicode/webshell-ssh:latest ghcr.io/rickicode/webshell-ssh:latest
           docker push $IMAGE_ID:latest
