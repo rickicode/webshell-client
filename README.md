@@ -11,7 +11,7 @@ It is distributed in the form of Docker container which includes Shellinabox and
 # Usage
 
 ```bash
-docker run -d --privileged --security-opt seccomp=unconfined --restart unless-stopped --name webshell -p 8018:8018 rickicode/webshell-ssh:latest
+docker run -d --privileged --security-opt seccomp=unconfined --restart unless-stopped --name webshell-ssh -p 8018:8018 rickicode/webshell-ssh:latest
 ```
 
 Navigate to http://hostname.com:8018/ to specify server ip, port and login interactively or 
@@ -37,6 +37,6 @@ If you want to use a private key, you need to encode it in base64 and pass it as
 
 ## Author
 
-rickicode @ [NETQ.ME](https://netq.me/)
+rickicode - [NETQ.ME](https://netq.me/)
 
 Forked from [Webshell](https://github.com/bwsw/webshell)
