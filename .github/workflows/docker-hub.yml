@@ -1,3 +1,4 @@
+name: Docker hub
 on:
   push:
     branches:
@@ -6,10 +7,6 @@ on:
     tags:
       - v*
   pull_request:
-  # This creates an environment variable called `IMAGE_NAME ` with the value `ghtoken_product_demo`.
-env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: webshell-ssh
 #
 jobs:
   # This pushes the image to GitHub Packages.
@@ -46,9 +43,3 @@ jobs:
           platforms: linux/amd64,linux/arm64/v8
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
-      - name: Log in to ghcr.io
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-      - name: Push image to ghcr.io
-        run: |
-          docker tag rickicode/webshell-ssh:latest ghcr.io/rickicode/webshell-ssh:latest
-          docker push ghcr.io/rickicode/webshell-ssh:latest
