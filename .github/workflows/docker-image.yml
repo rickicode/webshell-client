@@ -42,7 +42,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: rickicode/$IMAGE_NAME:latest
+          tags: rickicode/webshell-ssh:latest
           platforms: linux/amd64,linux/arm64/v8
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
@@ -51,7 +51,6 @@ jobs:
         #
       - name: Push image to ghcr.io
         run: |
-          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
-          echo IMAGE_ID=$IMAGE_ID
+          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/webshell-ssh
           docker tag rickicode/webshell-ssh:latest $IMAGE_ID:latest
           docker push $IMAGE_ID:latest
