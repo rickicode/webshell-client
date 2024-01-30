@@ -10,8 +10,10 @@ echo "export TERM=xterm" >> /opt/shellinabox.run
 echo "exec /opt/shellinabox.py \$1" >> /opt/shellinabox.run
 
 chmod 755 /opt/shellinabox.run
-cat /opt/shellinabox.run
+# cat /opt/shellinabox.run > /opt/shellinabox.run.bak
+
+echo "Running WebShell SSH..."
 
 echo 0 > /proc/sys/kernel/yama/ptrace_scope > /dev/null 2>&1
 
-/usr/bin/shellinaboxd -q -p 8018 -u webshell -g webshell --disable-ssl --no-beep --service '/:webshell:webshell:HOME:/opt/shellinabox.run ${url}' --user-css 'White On Black:-/etc/shellinabox/options-enabled/00_White On Black.css,Black on White:+/etc/shellinabox/options-enabled/00+Black on White.css;Color Terminal:+/etc/shellinabox/options-enabled/01+Color Terminal.css,Monochrome:-/etc/shellinabox/options-enabled/01_Monochrome.css'
+/usr/bin/shellinaboxd -q -p 8018 -u webshell -g webshell --disable-ssl --no-beep --service '/:webshell:webshell:HOME:/opt/shellinabox.run ${url}' --css '/etc/shellinabox/options-enabled/00_White On Black.css'

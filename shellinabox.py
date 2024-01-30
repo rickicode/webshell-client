@@ -117,7 +117,11 @@ if __name__ == "__main__":
 
 	identity_file = ""
 	if length > 3:
-		privkey = base64.b64decode(peer_parts[3]).decode('utf-8')
+		try:
+			privkey = base64.b64decode(peer_parts[3]).decode('utf-8')
+		except (base64.binascii.Error, UnicodeDecodeError) as e:
+			print("Error: Failed to decode base64:", e)
+			sys.exit(1)
 		if "RSA" in privkey:
 				privkey_path = os.path.join("/tmp", "privkey")
 				if os.path.exists(privkey_path):

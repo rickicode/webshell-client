@@ -51,3 +51,7 @@ jobs:
           echo VERSION=$VERSION
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
+          docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
+          DOCKERHUB_IMAGE_ID=rickicode/webshell-ssh:$VERSION
+          docker tag $IMAGE_NAME $DOCKERHUB_IMAGE_ID
+          docker push $DOCKERHUB_IMAGE_ID
