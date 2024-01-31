@@ -19,4 +19,4 @@ echo "Running WebShell SSH..."
 
 echo 0 > /proc/sys/kernel/yama/ptrace_scope > /dev/null 2>&1
 
-/usr/bin/shellinaboxd -q -p 8018 -u webshell -g webshell --disable-ssl --no-beep --service '/:webshell:webshell:HOME:/opt/shellinabox.run ${url}' --css '/etc/shellinabox/options-enabled/00_White On Black.css'
+/usr/bin/shellinaboxd -q -p $WEB_PORT -u webshell -g webshell --disable-ssl --no-beep --service '/:webshell:webshell:HOME:/opt/shellinabox.run ${url}' --css '/etc/shellinabox/options-enabled/00_White On Black.css'

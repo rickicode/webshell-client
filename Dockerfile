@@ -13,8 +13,9 @@ RUN git clone https://github.com/rickicode/shellinabox.git \
     && mv shellinaboxd /usr/local/bin/shellinaboxx && cd .. && rm -rf shellinabox
     # rm -rf /usr/bin/shellinaboxd
 
-EXPOSE 80 8018
+EXPOSE 80 8018 10000
 
+ENV WEB_PORT 8018
 ENV SSH_PORT 22
 ENV USERNAME root
 ENV DEFAULT_IP 0.0.0.0
