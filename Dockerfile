@@ -1,4 +1,4 @@
-FROM debian:buster-slim
+FROM debian
 
 COPY ./shellinabox.py ./shellinabox.init /opt/
 
